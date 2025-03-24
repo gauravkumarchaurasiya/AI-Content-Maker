@@ -20,7 +20,7 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 # Directories for storing outputs
 current_path = Path(__file__).resolve()
 root_path = current_path.parent.parent
-output_data_dir = root_path / 'output/video4'
+output_data_dir = root_path / 'output/video'
 
 # Ensure output directories exist
 output_data_dir.mkdir(parents=True, exist_ok=True)
@@ -32,11 +32,11 @@ music_output_dir = output_data_dir / 'output_music'
 async def generate_video(topic: str = Form(...)):
     try:
         # Generate the video script
-        # response_text = generate_video_script(topic)
-        # video_script = extract_json(response_text)
+        response_text = generate_video_script(topic)
+        video_script = extract_json(response_text)
         
         # # Save the generated script to a JSON file
-        # save_json(video_script, output_data_dir)
+        save_json(video_script, output_data_dir)
 
         # Read the saved video script
         json_file = output_data_dir / "video_script.json"
@@ -44,14 +44,14 @@ async def generate_video(topic: str = Form(...)):
             script = json.load(file)
         
         # Generate images from the script
-        # generate_images_from_script(script, images_output_dir)
+        generate_images_from_script(script, images_output_dir)
 
         # Generate audio from the script
-        # generate_audio(script, audio_output_dir)
+        generate_audio(script, audio_output_dir)
 
         # Generate background music based on the script
-        # music_prompt = generate_music_prompt(script["background_music_prompt"], script["scenes"], script["overall_video_mood"])
-        # generate_music(music_prompt, music_output_dir)
+        music_prompt = generate_music_prompt(script["background_music_prompt"], script["scenes"], script["overall_video_mood"])
+        generate_music(music_prompt, music_output_dir)
 
         # Create the final video using the generated script, images, audio, and music
         final_video_path = output_data_dir / "final_video.mp4"
