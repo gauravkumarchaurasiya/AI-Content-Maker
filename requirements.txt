@@ -1,0 +1,11 @@
+pydub
+fastapi
+uvicorn
+requests
+gtts
+moviepy
+opencv-python
+numpy
+jinja2
+google-generativeai
+-e .

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Generator</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Generate Your Video</h1>
+        <form id="video-form">
+            <label for="topic">Enter Topic:</label>
+            <input type="text" id="topic" name="topic" required>
+            <button type="submit">Generate Video</button>
+        </form>
+
+
+        <div id="output" style="display:none;">
+            <h2>Generated Video:</h2>
+            <video id="generated-video" controls></video>
+        </div>
+    </div>
+
+    <script src="static/script.js"></script>
+</body>
+</html>

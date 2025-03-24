@@ -1,0 +1,7 @@
+venv
+.env
+__pycache__
+src.egg-info
+final_video.mp3
+output
+app.log
